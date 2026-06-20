@@ -20,7 +20,8 @@ public class DescuentoServiceUnitTest {
         double descuento = servicio.calcularDescuentoMonto(100);
         assertEquals(0.0, descuento, "Montos menores a 500 no tienen descuento");
     }
-
+    //test para evaluar monto negativo
+   
     @Test
     public void testMontoNegativoLanzaExcepcion() {
         assertThrows(IllegalArgumentException.class, () -> {
