@@ -1,0 +1,12 @@
+# --- MAVEN EXCLUSIONS ---
+target/*
+
+# --- ECLIPSE ---
+.metadata/
+.classpath
+.project
+.settings/
+
+# --- OS GENERAL ---
+.DS_Store
+Thumbs.db
