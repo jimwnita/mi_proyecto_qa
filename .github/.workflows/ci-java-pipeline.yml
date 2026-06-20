@@ -1,0 +1,31 @@
+name: Pipeline de Calidad y Pruebas Java
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  build-and-test:
+    name: Compilación y Ejecución de Pruebas
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Descargar Código Fuente
+      uses: actions/checkout@v4
+
+    - name: Configurar JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: 'maven'
+
+    - name: Compilar Proyecto con Maven
+      run: mvn clean compile
+
+    - name: Ejecutar Pruebas Unitarias (Surefire)
+      run: mvn test
+
+    - name: Ejecutar Pruebas de Integración (Failsafe)
+      run: mvn verify -DskipTests=false
